@@ -1,0 +1,48 @@
+{
+    "start": 1,
+    "end": 5,
+    "rooms": [
+        {
+            "id": 1,
+            "type": "empty",
+            "ways": [
+                2,
+                3
+            ]
+        },
+        {
+            "id": 2,
+            "type": "empty",
+            "ways": [
+                1,
+                4
+            ]
+        },
+        {
+            "id": 3,
+            "type": "chest",
+            "chest_type": 1,
+            "ways": [
+                1,
+                4
+            ]
+        },
+        {
+            "id": 4,
+            "type": "monster",
+            "monster_type": 1,
+            "ways": [
+                3,
+                2,
+                5
+            ]
+        },
+        {
+            "id": 5,
+            "type": "empty",
+            "ways": [
+                4
+            ]
+        }
+    ]
+}

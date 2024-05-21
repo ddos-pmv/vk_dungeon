@@ -1,20 +1,29 @@
 <?php
 use Dungeon\Controllers\DungeonController;
 
-require __DIR__. '/../vendor/autoload.php';
-require __DIR__ . '/../src/Controllers/DungeonController.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$app = Flight::app();
-$router = $app->router();
-
-
-$dungeonController = new DungeonController($app);
-
-$router->post('/loadConfig', [$dungeonController, 'loadConfig']);
-$router->get('/', function (){
+// Создание экземпляра FlightPHP
+Flight::route('/', function(){
     echo 'Hello World!';
 });
 
-$app->start();
+// Создание экземпляра DungeonController
+$dungeonController = new DungeonController(Flight::app());
+
+// Определение маршрута для загрузки конфигурации
+Flight::route('POST /loadConfig', function() use ($dungeonController) {
+    // Вызов метода loadConfig у контроллера
+    $dungeonController->loadConfig(Flight::request(), Flight::response());
+});
+Flight::route('POST /start', function() use ($dungeonController) {
+    // Вызов метода loadConfig у контроллера
+    $dungeonController->start(Flight::request(), Flight::response());
+});
+
+// Запуск FlightPHP
+Flight::start();

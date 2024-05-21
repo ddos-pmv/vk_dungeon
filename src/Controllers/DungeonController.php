@@ -1,10 +1,12 @@
 <?php
-
 namespace Dungeon\Controllers;
 
 use Dungeon\Models\Dungeon;
+use Dungeon\Models\User;
 use Exception;
+use Flight;
 use flight\Engine;
+
 
 class DungeonController
 {
@@ -14,15 +16,24 @@ class DungeonController
         $this->app = $app;
     }
 
-    public function loadConfig()
+    public function loadConfig($request, $response)
     {
-        $body = $this->app->request()->getBody();
-        try {
-            Dungeon::save($body);
-        } catch (Exception $e){
-            echo $e;
+        $json = $request->getBody();
+        if (Dungeon::loadConfig($json)) {
+            Flight::json(['status' => 'success']);
         }
-    }
+        else{
+            Flight::json(['status' => 'error', 'message' => 'Invalid configuration'], 400);
+        }
 
+    }
+    public function start($request, $response)
+    {;
+        Dungeon::save_rooms();;
+        $start_room = Dungeon::get_start();
+        echo "start_room-".$start_room."<br>";
+        User::init_start($start_room);
+
+    }
 
 }

@@ -30,6 +30,8 @@ class ComposerStaticInita2d6219f6f37132c59657e3513f51769
         ),
         'D' => 
         array (
+            'Dungeon\\Models\\' => 15,
+            'Dungeon\\Controllers\\' => 20,
             'Dotenv\\' => 7,
         ),
     );
@@ -54,6 +56,14 @@ class ComposerStaticInita2d6219f6f37132c59657e3513f51769
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Dungeon\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Models',
+        ),
+        'Dungeon\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controllers',
         ),
         'Dotenv\\' => 
         array (
